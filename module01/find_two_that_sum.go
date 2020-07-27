@@ -35,5 +35,31 @@ package module01
 //    for the sum of 4.
 //
 func FindTwoThatSum(numbers []int, sum int) (int, int) {
-	return 0, 0
+	total := 0
+	for _, val := range numbers {
+		//total = total + val is same as below
+		total += val
+	}
+	return total
 }
+
+//recursion example not as optemized most of the time
+
+func Sum(numbers []int) int {
+	if len(numbers) == 0 {
+		return 0
+	}
+	return numbers[0] + sum(numbers[1:])
+}
+
+// What is happening:
+// Sum(3,4,5) =>
+// 	3 + Sum(4, 5) =>
+// 		4 + Sum(5) =>
+// 			5 + Sum() =>
+// 				0
+
+//
+// Sum({2}) = 2 + Sum({}) // 0
+// Sum({2,3,4}) = 2 + Sum({3,4}) // 0
+// Sum({}) // 0
